@@ -21,6 +21,7 @@ pipeline {
         stage('Inicio de Servicio & Validación') {
             steps {
                 sh "sudo service cassandra start"
+                sh "sleep 30"
                 sh "nodetool status"
                 sh "cqlsh -e 'describe keyspaces;'"
             }  
