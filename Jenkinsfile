@@ -15,8 +15,6 @@ pipeline {
         }
         stage('Modificaciones Nodo') {
             steps {
-                sh "${params.CLUSTER_NAME}"
-                sh "cd
                 sh "cat /etc/cassandra/cassandra.yaml | sed -e "s/Test Cluster/${params.CLUSTER_NAME}/g;" > /etc/cassandra/cassandra.yaml"
             }   
         }  
