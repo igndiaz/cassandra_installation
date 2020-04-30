@@ -15,7 +15,7 @@ pipeline {
             }
         stage('Modificaciones Nodo') {
             steps {
-                sh 'cat /etc/cassandra/cassandra.yaml | sed -e "s/'Test Cluster'/${params.SNITCH}/g;"
+                sh 'cat /etc/cassandra/cassandra.yaml | sed -e "s/'Test Cluster'/${params.SNITCH}/g;"'
             }   
         stage('Inicio de Servicio & Validación') {
             steps {
