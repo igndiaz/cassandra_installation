@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh "echo 'deb https://downloads.apache.org/cassandra/debian 311x main' | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list"
                 sh "curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -"
-                sh "sudo apt-get install cassandra"
+                sh "sudo apt-get --assume-yes install cassandra"
             }  
         }
         stage('Modificaciones Nodo') {
