@@ -12,17 +12,19 @@ pipeline {
                 sh 'curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -'
                 sh 'sudo apt-get update'
                 sh 'sudo apt-get install cassandra'
-            }
+            }  
+        }
         stage('Modificaciones Nodo') {
             steps {
                 sh 'cat /etc/cassandra/cassandra.yaml | sed -e "s/'Test Cluster'/${params.SNITCH}/g;"'
             }   
+        }  
         stage('Inicio de Servicio & Validación') {
             steps {
                 sh 'sudo service cassandra start'
                 sh 'nodetool status'
                 sh 'cqlsh -e 'describe keyspaces;''
-            }    
-        }
+            }  
+        }    
     }
 }
